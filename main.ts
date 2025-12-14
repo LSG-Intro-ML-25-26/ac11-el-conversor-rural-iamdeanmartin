@@ -43,3 +43,22 @@ portal2 = sprites.create(assets.image`
     portal
     `, SpriteKind.portal)
 tiles.placeOnTile(portal2, tiles.getTileLocation(7, 4))
+// Valores de intercambio de objetos.
+let diccionario_intercambio = {
+    "gallina" : 6.0,
+    "patata" : 2.0 / 1.5,
+    "cabra" : 5.0,
+    "huevo" : 3.0 / 12.0,
+    "caballo" : 12.0,
+}
+
+// inventario inicial del jugador.
+let inventario_inicial_nena = {
+    "madera" : 25.0,
+    "gallina" : 2,
+    "patata" : 5.5,
+    "cabra" : 0,
+    "huevo" : 3,
+    "caballo" : 0,
+}
+
