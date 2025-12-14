@@ -1,11 +1,9 @@
-def on_down_pressed():
-    animation.run_image_animation(nena,
-        assets.animation("""
-            nena-animation-down
-            """),
-        500,
-        False)
-controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
+@namespace
+class SpriteKind:
+    decoration = SpriteKind.create()
+    chest = SpriteKind.create()
+    comerciante = SpriteKind.create()
+    portal = SpriteKind.create()
 
 def on_right_pressed():
     animation.run_image_animation(nena,
@@ -25,140 +23,17 @@ def on_left_pressed():
         False)
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
-def on_up_pressed():
-    animation.run_image_animation(nena,
-        assets.animation("""
-            nena-animation-up
-            """),
-        500,
-        False)
-controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
-
 nena: Sprite = None
-mySprite20251214T140054840Z = sprites.create(img("""
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbeeeeeeeeeeeebebeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee7eeeeeeeeeeeeeeeeebeeeeeeeeeeeee4eeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeb7eeeeeeeeeeeeeeeebb7eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebebbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee7eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee4eeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee4eeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee444eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeebeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee4eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee4eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee7beeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee7eeeeeeeeeeeeeeeeee7beee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee4eeeeeeebbeeeeeeeeeeeeeeeeeebeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebeeeeeeeeeee4eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebb7eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbecccccceebbbbbbecccccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebccccceebbbbbbebccccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebccccceebbbbbbebccccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebccccceebbbbbbebccccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebccccceebbbbbbebccccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebccccceebbbbbeebecccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbcecccccceeccccceeeecccceeeeeeeeecbbbbbeecccccceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeecccccbeeeeeeeeebbbbbbebccccceeebbbbbebbbbbbeebbbbbbeeebbbbeebbeebbebbbbbbe
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeecccccbeeeeeeeeebbbbbbebccccceebbbbbbebbbbbbeebbbbbbebbbbbbeeccebbbebbbbbbe
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeecccccbeeeeeeeeebbbbbbebccccceebbbbbbebbbbbbeebbbbbbebbbbbbeebbbbbbebbbbbee
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeecccccbeeeeeeeeebbbbbbebccccceebbbbbbebbbbbbeeeecbbbebbbbbbeebbbbbbebbbbbee
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeecccccbeeeeeeeeebbbbbbebccccceebbbbbbebbbbbbeebbeebbebbbbbbeebbbbbcebbbbbbe
-        bbbbbbebbbbbbeebbbbbbebbebbbeeeeeeeeebbbbbbeebbbbbbeeeeeeeeebbbbbbebbbbbbeebbbbbbeeecbbbeebbbeecebbbbbbeebbbeeeeebbbbbe
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbeeeebbbbbbeeeeeeeeebbbbbbebbbbbbeeccccccebbbbbbeebbbbbeeebbbbbeeccccccebbbbbbe
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbeeeebbbbbeeeeeeeeeebbbbbbebbbbbbeecccccbebbbbbbeebbbbbbebbbbbbeecccccbebbbbbbe
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeebbbbbbeeeeeeeeebbbbbbebbbbbbeecccccbebbbbbbeebbbbbbebbbbbbeecccccbeeebbbbe
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeebbbbbbeeeeeeeeebbbbbbebbbbbbeecccccbebbbbbbeebbbbbbebbbbbbeecccbceeeeebbbe
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeebbbbbbeeeeeeeeebbbbbbebbbbbbeecccbcbebbbbbbeebbbbbbecbbbbbeecbbeeeebbeebbe
-        bbbbbbebbbbbbeebbbbbbebbbbbceeeeeeeeebbbbbbeebbbbbbeeeeeeeeebbbbbbebbbbbbeecccceeebbbbbbeebbbbbeeeeebbbeebeeeeeebbbbeee
-        ccebeeecccccceeebbbbceccccceeeeeeeeeecccccceecccccceeeeeeeeeccccccecccccceecceeeeeeebbbbeeccceeeeeeeecceeeeeeeeecbbbeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbeeeeeccccceebbbbbbebbbcbbeeeeeeeeebccccceebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebccccceebbbbbbeebcebbeeeeeeeeebccccceebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbeeccccceebbbbbbeeeebbbeeeeeeeeebccccceebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebccccceebbbbbbeebbbbbeeeeeeeeebccccceebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebccccbeebbbbbbebbbbbbeeeeeeeeebccccceebbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbceebbbbceebbbbbbeeeeeeeeebbbbbbeebbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbbeebbbbbbeeecccceeeeeeeeebbbbbbeebbbeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeeebbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbbeebbbbbbeeecccceeeeeeeeebbbbbbeebbbbeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbbeeebbbbbeeecccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbbeeeecbbbebccccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbbeeeeecbbebccccceeeeeeeeebbbbbbeebbbbbbeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        cbbbbbebbbbbbeebbeebbebccccceeeeeeeeebbbbeeeebbbbbbeeeeeeeeeeebbbbeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        ecccccecbbebceecceeeceeccccceeeeeeeeeccccceeebbbbbceeeeeeeeeeeecceeeeeeeeeeeeeeeeecccceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        cccccbebbbbbbeeebbbbbebbbbbbeeeeeeeeebbbbbbeeccccceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbe
-        ccecbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeecccccbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbe
-        ccceeeebbbbbbeebbbbbbebbbbbbeeeeeeeeebbbbbbeecccccbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbe
-        ccccceebbbbbbeebbbbbbebbbbbbeeeeeeeeeeccbbbeecccccbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbe
-        cccccbebbbbbbeebbbbbbebbbbeeeeeeeeeeebbeebbeecccccbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeeeeebbbbbbe
-        bbbbbbeebbbbbeebbbbbbebbbeeeeeeeeeeeebbbeebeeebbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebbbeeeeeeeeeeeeeeeeeeeebbbbbe
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        ebbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeecccccceebbbbbbeeeeeeeeeeeeeeeebbbbbbeeeebbbbeeeeeeeefeeeeeeeeeeeeeeeeeeeeeeeeeeeef
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebccccceebbbbbbeeeeeeeeeeeeeeeebbbbbbeeeecbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbebbbbbbeebbbbbbebbbbbbeeeeeeeeebccccceebbbbbbeeeeeeeeeeeeeeeebbbbbbeebbeecbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbecbbbbbeebbbbbbebbbbbbeeeeeeeeebccccbeebbbbbbeeeeeeeeeeeeeeeecbbbbbeebbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbbeeebbbbeebbbbbbecbbbbbeeeeeeeeebcbbbeeebbbbbbeeeeeeeeeeeeeeeeebbbbbeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbceeeeeeebeebbbbeeeeebbbbeeeeeeeeebbeeeeeebbbbbbeeeeeeeeeeeeeeeeecbbbbeebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        cccceeeeeeeeceebbbeeeeeeeccceeeeeeeeeceebbbeebbbbbceeeeeeeeeeeeeeeeeecccceebbbbbceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbbeeeeeeeeeeeeeeeeeecbeeceeeeeeeeeeeeeeeeebbbbbbeeeeeeeeeeeeccbeebbbbbeebbbbbbeeeeebbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbbeeeeeeeeeeeeeeeeeeeceebceeeeeeeeeeeeeeeeebbbbbbeeeeeeeeebccccbebbbbbbeebbbbbbeeeebbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbbeeeeeeeeeeeeeeeeeeeeeebcceeeeeeeeeeeeeeeeebbbbbbeeeeeeeeecccccbebbbbbbeebbbbbbebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        bbeeeeeeeeeeeeeeeeeeeeebcccceeeeeeeeeeeeeeeeeccbbbbeeeeeeeeecccccbebbbbbbeebbbbbbebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        beeeeeeeeeeeeeeeeeeeeeeccccceeeeeeeeeeeeeeeeeeeebbbeeeeeeeeecccccbebbbbbbeeebbbbbebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeecbbbeeeeeeeeeeeeeeeeeeeeeeceeeeeeeeebbbbbeecbbbbbeeeebbbbebbbbbbeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        """),
-    SpriteKind.player)
+tiles.set_current_tilemap(tilemap("""
+    nivel_juego
+    """))
 nena = sprites.create(assets.image("""
     nena-front
     """), SpriteKind.player)
-controller.move_sprite(nena)
+tiles.place_on_tile(nena, tiles.get_tile_location(2, 4))
+nene = sprites.create(assets.image("""
+        miImagen4
+        """),
+    SpriteKind.decoration)
+tiles.place_on_tile(nene, tiles.get_tile_location(4, 4))
+controller.move_sprite(nena, 100, 0)
