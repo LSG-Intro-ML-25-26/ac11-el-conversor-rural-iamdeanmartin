@@ -23,9 +23,13 @@ def on_left_pressed():
         False)
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
-nena: Sprite = None
-# Variable para comerciar
+def on_a_pressed():
+    if cerca_comerciante2:
+        pass
+controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
+
 cerca_comerciante2 = False
+nena: Sprite = None
 tiles.set_current_tilemap(tilemap("""
     nivel_juego
     """))
@@ -41,8 +45,23 @@ comerciante2 = sprites.create(assets.image("""
     SpriteKind.comerciante)
 tiles.place_on_tile(comerciante2, tiles.get_tile_location(4, 4))
 
-def on_update():
+def on_on_update():
     global cerca_comerciante2
     cerca_comerciante2 = nena.overlaps_with(comerciante2)
+game.on_update(on_on_update)
+#Variable para activar el modo de la partida
+modo = "juego"
 
-game.on_update(on_update)
+#Función para empezar a tradear
+def comerciar():
+    global modo
+    modo = "trade"
+
+    controller.move_sprite(nena, 0, 0)
+
+#Función para volver al jeugo y salir del tradeo
+def volver_juego():
+    global modo
+    modo = "juego"
+
+    controller.move_sprite(nena, 100, 0)
