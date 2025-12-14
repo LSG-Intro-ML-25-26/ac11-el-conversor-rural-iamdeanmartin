@@ -79,25 +79,6 @@ b b b b b b b b b b b b b b b b
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `;
-            case "image4":
-            case "miImagen1":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`;
             case "JwKiYH(epjM2e}eaRsM:":
             case "Puerta":return img`
 .................................................
@@ -150,25 +131,6 @@ b b b b b b b b b b b b b b b b
 .................................................
 .................................................
 .................................................
-`;
-            case "image2":
-            case "miImagen":return img`
-. . b b b b b b b b b b b b . . 
-. b e 4 4 4 4 4 4 4 4 4 4 e b . 
-b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
-b e e 4 4 4 4 4 4 4 4 4 4 e e b 
-b e e e e e e e e e e e e e e b 
-b e e e e e e e e e e e e e e b 
-b b b b b b b d d b b b b b b b 
-c b b b b b b c c b b b b b b c 
-c c c c c c b c c b c c c c c c 
-b e e e e e c b b c e e e e e b 
-b e e e e e e e e e e e e e e b 
-b c e e e e e e e e e e e e c b 
-b b b b b b b b b b b b b b b b 
-. b b . . . . . . . . . . b b . 
 `;
             case "Il*zKUr;MYZL#Ts*Ha1~":
             case "background":return img`
@@ -294,7 +256,7 @@ ddddd77777777777777777777777777777777777ddddd77777777777777777777777777777777777
 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
 `;
             case "image7":
-            case "miImagen4":return img`
+            case "comerciante":return img`
 . . . . f f f f . . . . . 
 . . f f f f f f f f . . . 
 . f f f f f f c f f f . . 
@@ -311,6 +273,44 @@ e 4 f 7 7 7 7 7 7 f 4 e .
 e e f 6 6 6 6 6 6 f e e . 
 . . . f f f f f f . . . . 
 . . . f f . . f f . . . . 
+`;
+            case "image2":
+            case "cofre":return img`
+. . b b b b b b b b b b b b . . 
+. b e 4 4 4 4 4 4 4 4 4 4 e b . 
+b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+b e e e e e e e e e e e e e e b 
+b e e e e e e e e e e e e e e b 
+b b b b b b b d d b b b b b b b 
+c b b b b b b c c b b b b b b c 
+c c c c c c b c c b c c c c c c 
+b e e e e e c b b c e e e e e b 
+b e e e e e e e e e e e e e e b 
+b c e e e e e e e e e e e e c b 
+b b b b b b b b b b b b b b b b 
+. b b . . . . . . . . . . b b . 
+`;
+            case "image4":
+            case "portal":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . c . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
 `;
         }
         return null;

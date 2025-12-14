@@ -15,7 +15,11 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed(
             nena-animation-left
             `, 500, false)
 })
+// Sprite del personaje jugador, posicionamiento y movimiento.
 let nena : Sprite = null
+let chest2 : Sprite = null
+let comerciante2 : Sprite = null
+let portal2 : Sprite = null
 tiles.setCurrentTilemap(tilemap`
     nivel_juego
     `)
@@ -23,8 +27,19 @@ nena = sprites.create(assets.image`
     nena-front
     `, SpriteKind.Player)
 tiles.placeOnTile(nena, tiles.getTileLocation(2, 4))
-let nene = sprites.create(assets.image`
-        miImagen4
-        `, SpriteKind.decoration)
-tiles.placeOnTile(nene, tiles.getTileLocation(4, 4))
 controller.moveSprite(nena, 100, 0)
+//  Sprite del cofre y posicionamiento.
+chest2 = sprites.create(assets.image`
+    cofre
+    `, SpriteKind.chest)
+tiles.placeOnTile(chest2, tiles.getTileLocation(0, 4))
+//  Sprite del comerciante y posicionamiento.
+comerciante2 = sprites.create(assets.image`
+        comerciante
+        `, SpriteKind.comerciante)
+tiles.placeOnTile(comerciante2, tiles.getTileLocation(4, 4))
+//  Sprite del portal y posicionamiento.
+portal2 = sprites.create(assets.image`
+    portal
+    `, SpriteKind.portal)
+tiles.placeOnTile(portal2, tiles.getTileLocation(7, 4))
