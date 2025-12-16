@@ -291,6 +291,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if (inventarioAbierto == 0) {
             cofreInventario.setImage(assets.image`cofreAbierto`)
             inventarioAbierto = 1
+            controller.moveSprite(nena, 0, 0)
             menuInventario = miniMenu.createMenuFromArray([
             miniMenu.createMenuItem("Huevos: " + huevos, img`
                 . . 2 2 b b b b b . . . . . . . 
@@ -500,6 +501,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         inventarioAbierto = 0
         menuInventario.close()
         cofreInventario.setImage(assets.image`cofre`)
+        controller.moveSprite(nena, 100, 100)
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.inventario, function (sprite, otherSprite) {
