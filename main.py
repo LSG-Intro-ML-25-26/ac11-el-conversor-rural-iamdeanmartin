@@ -5,6 +5,7 @@ class SpriteKind:
     comerciante = SpriteKind.create()
     portal = SpriteKind.create()
     material = SpriteKind.create()
+    inventario = SpriteKind.create()
 
 def on_down_pressed():
     global direccionNena
@@ -40,7 +41,7 @@ def on_left_pressed():
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
 def on_a_pressed():
-    global golpesArbol, tronco1, esArbol, arbol, golpesArbol2, tronco2, esArbol2, arbol2
+    global inventarioAbierto, menuInventario, golpesArbol, tronco1, esArbol, reapareceArbol1, golpesArbol2, tronco2, esArbol2, reapareceArbol2
     if direccionNena == 1:
         animation.run_image_animation(nena,
             [img("""
@@ -287,6 +288,131 @@ def on_a_pressed():
                     """)],
             100,
             False)
+    if cercaCofre == 1:
+        if inventarioAbierto == 0:
+            inventarioAbierto = 1
+            menuInventario = miniMenu.create_menu_from_array([miniMenu.create_menu_item(huevos,
+                        img("""
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            """)),
+                    miniMenu.create_menu_item(gallinas,
+                        img("""
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            """)),
+                    miniMenu.create_menu_item(cabras,
+                        img("""
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            """)),
+                    miniMenu.create_menu_item(caballos,
+                        img("""
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            """)),
+                    miniMenu.create_menu_item(lena,
+                        img("""
+                            ........................
+                            ..........bbbb..........
+                            ........bbddddbb........
+                            .......bddbbbbddb.......
+                            ......bdbbddddbbdb......
+                            .....bdbbdbbbbdbbdb.....
+                            .....bdbdbddddbdbdb.....
+                            .....cdbbdbbbbdbbdc.....
+                            .....cbdbbddddbbdbc.....
+                            .....efbddbbbbddbce.....
+                            .....eeffbddddbccee.....
+                            .....eeeeffcccceee......
+                            .....ceeeeeeeeeeee......
+                            .....ceeeeeeeeeeee......
+                            .....feeeeeeeeeeee......
+                            .....cceeeeeeeeeee......
+                            ......feeeeeeeeeee......
+                            .....6fceeeeeeeeee6.....
+                            ....6776eeeeeeeee676....
+                            ...6777666eeee6666776...
+                            ..67768e67766777667776..
+                            ...668ee7768867788666...
+                            ......ee77eeee77ecee....
+                            ......ee6eeeeee6eef.....
+                            """)),
+                    miniMenu.create_menu_item(patatas,
+                        img("""
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            . . . . . . . . . . . . . . . .
+                            """))])
     if esArbol == 1:
         if nena.overlaps_with(arbol):
             golpesArbol += 1
@@ -297,18 +423,9 @@ def on_a_pressed():
                         """),
                     SpriteKind.material)
                 tiles.place_on_tile(tronco1, tiles.get_tile_location(6, 6))
-                arbol.set_image(assets.image("""
-                    miImagen13
-                    """))
                 esArbol = 0
                 golpesArbol = 0
-                pause(5000)
-                sprites.destroy(tronco1)
-                arbol = sprites.create(assets.image("""
-                    árbol
-                    """), SpriteKind.material)
-                tiles.place_on_tile(arbol, tiles.get_tile_location(6, 5))
-                esArbol = 1
+                reapareceArbol1 = game.runtime() + 5000
     if esArbol2 == 1:
         if nena.overlaps_with(arbol2):
             golpesArbol2 += 1
@@ -319,19 +436,26 @@ def on_a_pressed():
                         """),
                     SpriteKind.material)
                 tiles.place_on_tile(tronco2, tiles.get_tile_location(8, 7))
-                arbol2.set_image(assets.image("""
-                    miImagen13
-                    """))
                 esArbol2 = 0
                 golpesArbol2 = 0
-                pause(5000)
-                sprites.destroy(tronco2)
-                arbol2 = sprites.create(assets.image("""
-                    árbol
-                    """), SpriteKind.material)
-                tiles.place_on_tile(arbol2, tiles.get_tile_location(8, 6))
-                esArbol2 = 1
+                reapareceArbol2 = game.runtime() + 5000
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
+
+def on_b_pressed():
+    global inventarioAbierto
+    if inventarioAbierto == 1:
+        inventarioAbierto = 0
+controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
+
+def on_on_overlap(sprite, otherSprite):
+    global cercaCofre
+    cercaCofre = 1
+sprites.on_overlap(SpriteKind.player, SpriteKind.inventario, on_on_overlap)
+
+def on_on_destroyed(sprite2):
+    global lena
+    lena += 1
+sprites.on_destroyed(SpriteKind.material, on_on_destroyed)
 
 def on_up_pressed():
     animation.run_image_animation(nena,
@@ -344,6 +468,7 @@ controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
 
 tronco2: Sprite = None
 tronco1: Sprite = None
+menuInventario: miniMenu.MenuSprite = None
 arbol2: Sprite = None
 arbol: Sprite = None
 nena: Sprite = None
@@ -352,6 +477,26 @@ golpesArbol2 = 0
 esArbol = 0
 golpesArbol = 0
 direccionNena = 0
+reapareceArbol2 = 0
+reapareceArbol1 = 0
+cercaCofre = 0
+inventarioAbierto = 0
+lena = 0
+cabras = 0
+huevos = 0
+patatas = 0
+gallinas = 0
+caballos = 0
+caballos = 0
+gallinas = 0
+patatas = 0
+huevos = 0
+cabras = 0
+lena = 0
+inventarioAbierto = 0
+cercaCofre = 0
+reapareceArbol1 = 0
+reapareceArbol2 = 0
 direccionNena = 0
 golpesArbol = 0
 esArbol = 1
@@ -368,12 +513,12 @@ nena = sprites.create(assets.image("""
     """), SpriteKind.player)
 controller.move_sprite(nena, 100, 100)
 nena.set_stay_in_screen(True)
-tiles.place_on_tile(nena, tiles.get_tile_location(4, 5))
+tiles.place_on_tile(nena, tiles.get_tile_location(8, 5))
 trader = sprites.create(assets.image("""
         comerciante
         """),
     SpriteKind.comerciante)
-tiles.place_on_tile(trader, tiles.get_tile_location(1, 5))
+tiles.place_on_tile(trader, tiles.get_tile_location(3, 5))
 arbol = sprites.create(assets.image("""
     árbol
     """), SpriteKind.material)
@@ -382,3 +527,35 @@ arbol2 = sprites.create(assets.image("""
     árbol
     """), SpriteKind.material)
 tiles.place_on_tile(arbol2, tiles.get_tile_location(8, 6))
+cofreInventario = sprites.create(assets.image("""
+    cofre
+    """), SpriteKind.inventario)
+tiles.place_on_tile(cofreInventario, tiles.get_tile_location(0, 6))
+
+def on_update_interval():
+    global arbol, esArbol
+    if esArbol == 0 and game.runtime() > reapareceArbol1:
+        sprites.destroy(tronco1)
+        arbol = sprites.create(assets.image("""
+            árbol
+            """), SpriteKind.material)
+        tiles.place_on_tile(arbol, tiles.get_tile_location(6, 5))
+        esArbol = 1
+game.on_update_interval(500, on_update_interval)
+
+def on_update_interval2():
+    global arbol2, esArbol2
+    if esArbol2 == 0 and game.runtime() > reapareceArbol2:
+        sprites.destroy(tronco2)
+        arbol2 = sprites.create(assets.image("""
+            árbol
+            """), SpriteKind.material)
+        tiles.place_on_tile(arbol2, tiles.get_tile_location(8, 6))
+        esArbol2 = 1
+game.on_update_interval(500, on_update_interval2)
+
+def on_update_interval3():
+    global cercaCofre
+    if not (nena.overlaps_with(cofreInventario)):
+        cercaCofre = 0
+game.on_update_interval(500, on_update_interval3)

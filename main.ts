@@ -6,6 +6,7 @@ namespace SpriteKind {
     export const material = SpriteKind.create()
     export const inventario = SpriteKind.create()
 }
+// MOVIMIENTOS PERSONAJE
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     nena,
@@ -33,7 +34,9 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
     direccionNena = 1
 })
+// LÓGICA BOTON A
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    // ANIMACIONES PERS. TALAR
     if (direccionNena == 1) {
         animation.runImageAnimation(
         nena,
@@ -283,6 +286,186 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         false
         )
     }
+    // LÓGICA APERTURA INVENTARIO
+    if (cercaCofre == 1) {
+        if (inventarioAbierto == 0) {
+            cofreInventario.setImage(assets.image`cofreAbierto`)
+            inventarioAbierto = 1
+            menuInventario = miniMenu.createMenuFromArray([
+            miniMenu.createMenuItem("Huevos: " + huevos, img`
+                . . 2 2 b b b b b . . . . . . . 
+                . 2 b 4 4 4 4 4 4 b . . . . . . 
+                2 2 4 4 4 4 d d 4 4 b . . . . . 
+                2 b 4 4 4 4 4 4 d 4 b . . . . . 
+                2 b 4 4 4 4 4 4 4 d 4 b . . . . 
+                2 b 4 4 4 4 4 4 4 4 4 b . . . . 
+                2 b 4 4 4 4 4 4 4 4 4 e . . . . 
+                2 2 b 4 4 4 4 4 4 4 b e . . . . 
+                . 2 b b b 4 4 4 b b b e . . . . 
+                . . e b b b b b b b e e . . . . 
+                . . . e e b 4 4 b e e e b . . . 
+                . . . . . e e e e e e b d b b . 
+                . . . . . . . . . . . b 1 1 1 b 
+                . . . . . . . . . . . c 1 d d b 
+                . . . . . . . . . . . c 1 b c . 
+                . . . . . . . . . . . . c c . . 
+                `),
+            miniMenu.createMenuItem("Gallinas: " + gallinas, img`
+                . . . . . . b b b b a a . . . . 
+                . . . . b b d d d 3 3 3 a a . . 
+                . . . b d d d 3 3 3 3 3 3 a a . 
+                . . b d d 3 3 3 3 3 3 3 3 3 a . 
+                . b 3 d 3 3 3 3 3 b 3 3 3 3 a b 
+                . b 3 3 3 3 3 a a 3 3 3 3 3 a b 
+                b 3 3 3 3 3 a a 3 3 3 3 d a 4 b 
+                b 3 3 3 3 b a 3 3 3 3 3 d a 4 b 
+                b 3 3 3 3 3 3 3 3 3 3 d a 4 4 e 
+                a 3 3 3 3 3 3 3 3 3 d a 4 4 4 e 
+                a 3 3 3 3 3 3 3 d d a 4 4 4 e . 
+                a a 3 3 3 d d d a a 4 4 4 e e . 
+                . e a a a a a a 4 4 4 4 e e . . 
+                . . e e b b 4 4 4 4 b e e . . . 
+                . . . e e e e e e e e . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `),
+            miniMenu.createMenuItem("Cabras: " + cabras, img`
+                . . . . . . b b b b . . . . . . 
+                . . . . . . b 4 4 4 b . . . . . 
+                . . . . . . b b 4 4 4 b . . . . 
+                . . . . . b 4 b b b 4 4 b . . . 
+                . . . . b d 5 5 5 4 b 4 4 b . . 
+                . . . . b 3 2 3 5 5 4 e 4 4 b . 
+                . . . b d 2 2 2 5 7 5 4 e 4 4 e 
+                . . . b 5 3 2 3 5 5 5 5 e e e e 
+                . . b d 7 5 5 5 3 2 3 5 5 e e e 
+                . . b 5 5 5 5 5 2 2 2 5 5 d e e 
+                . b 3 2 3 5 7 5 3 2 3 5 d d e 4 
+                . b 2 2 2 5 5 5 5 5 5 d d e 4 . 
+                b d 3 2 d 5 5 5 d d d 4 4 . . . 
+                b 5 5 5 5 d d 4 4 4 4 . . . . . 
+                4 d d d 4 4 4 . . . . . . . . . 
+                4 4 4 4 . . . . . . . . . . . . 
+                `),
+            miniMenu.createMenuItem("Caballos: " + caballos, img`
+                4 4 4 . . 4 4 4 4 4 . . . . . . 
+                4 5 5 4 4 5 5 5 5 5 4 4 . . . . 
+                b 4 5 5 1 5 1 1 1 5 5 5 4 . . . 
+                . b 5 5 5 5 1 1 5 5 1 1 5 4 . . 
+                . b d 5 5 5 5 5 5 5 5 1 1 5 4 . 
+                b 4 5 5 5 5 5 5 5 5 5 5 1 5 4 . 
+                c d 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+                c d 4 5 5 5 5 5 5 5 5 5 5 1 5 4 
+                c 4 5 5 5 d 5 5 5 5 5 5 5 5 5 4 
+                c 4 d 5 4 5 d 5 5 5 5 5 5 5 5 4 
+                . c 4 5 5 5 5 d d d 5 5 5 5 5 b 
+                . c 4 d 5 4 5 d 4 4 d 5 5 5 4 c 
+                . . c 4 4 d 4 4 4 4 4 d d 5 d c 
+                . . . c 4 4 4 4 4 4 4 4 5 5 5 4 
+                . . . . c c b 4 4 4 b b 4 5 4 4 
+                . . . . . . c c c c c c b b 4 . 
+                `),
+            miniMenu.createMenuItem("Leña: " + lena, img`
+                ........................
+                ..........bbbb..........
+                ........bbddddbb........
+                .......bddbbbbddb.......
+                ......bdbbddddbbdb......
+                .....bdbbdbbbbdbbdb.....
+                .....bdbdbddddbdbdb.....
+                .....cdbbdbbbbdbbdc.....
+                .....cbdbbddddbbdbc.....
+                .....efbddbbbbddbce.....
+                .....eeffbddddbccee.....
+                .....eeeeffcccceee......
+                .....ceeeeeeeeeeee......
+                .....ceeeeeeeeeeee......
+                .....feeeeeeeeeeee......
+                .....cceeeeeeeeeee......
+                ......feeeeeeeeeee......
+                .....6fceeeeeeeeee6.....
+                ....6776eeeeeeeee676....
+                ...6777666eeee6666776...
+                ..67768e67766777667776..
+                ...668ee7768867788666...
+                ......ee77eeee77ecee....
+                ......ee6eeeeee6eef.....
+                `),
+            miniMenu.createMenuItem("Patatas: " + patatas, img`
+                . . . . . . 2 2 2 2 . . . . . . 
+                . . . . 2 2 3 3 3 3 2 e . . . . 
+                . . . 2 3 d 1 1 d d 3 2 e . . . 
+                . . 2 3 1 d 3 3 3 d d 3 e . . . 
+                . 2 3 1 3 3 3 3 3 d 1 3 b e . . 
+                . 2 1 d 3 3 3 3 d 3 3 1 3 b b . 
+                2 3 1 d 3 3 1 1 3 3 3 1 3 4 b b 
+                2 d 3 3 d 1 3 1 3 3 3 1 3 4 4 b 
+                2 d 3 3 3 1 3 1 3 3 3 1 b 4 4 e 
+                2 d 3 3 3 1 1 3 3 3 3 1 b 4 4 e 
+                e d 3 3 3 3 d 3 3 3 d d b 4 4 e 
+                e d d 3 3 3 d 3 3 3 1 3 b 4 b e 
+                e 3 d 3 3 1 d d 3 d 1 b b e e . 
+                . e 3 1 1 d d 1 1 1 b b e e e . 
+                . . e 3 3 3 3 3 3 b e e e e . . 
+                . . . e e e e e e e e e e . . . 
+                `)
+            ])
+            menuInventario.setDimensions(130, 90)
+            menuInventario.z = 4
+            menuInventario.setFrame(img`
+                999999999999999999999999999999999999999999999999
+                999988899999999999998889999999999999888999999999
+                998888888999888899888888899988889988888889998889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988688888888888888888888888888888888888886888889
+                988688888888688888888888888888888868888866888889
+                988668888888668888888888888888888868888886888689
+                966688888888688888888888888688888866888866688689
+                986668888886668888688888888688888668888866886689
+                988666888888688888688888886668888866888666688689
+                966688888866666888668888886688888866688866886669
+                986666888866668886666888866666886668888666686689
+                986666888866668888668888886688888666888666666669
+                966668888666666886666888866666886666866666666669
+                986688886666668886666888666668886666666666666669
+                966666688666666666666666666666666666666666666669
+                966666886666666666666666666666666666666666666669
+                966666666666666666666666666666666666666666666669
+                999999999999999999999999999999999999999999999999
+                `)
+            menuInventario.setTitle("Inventario")
+            menuInventario.setPosition(scene.screenWidth() / 2, scene.screenHeight() / 2)
+        }
+    }
+    // LÓGICA TALA ÁRBOLES
     if (esArbol == 1) {
         if (nena.overlapsWith(arbol)) {
             golpesArbol += 1
@@ -310,11 +493,21 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
+// lÓGICA BOTÓN B
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    // LÓGICA CIERRE INVENTARIO
+    if (inventarioAbierto == 1) {
+        inventarioAbierto = 0
+        menuInventario.close()
+        cofreInventario.setImage(assets.image`cofre`)
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.inventario, function (sprite, otherSprite) {
     cercaCofre = 1
 })
+// ACUMULACIÓN LEÑA
 sprites.onDestroyed(SpriteKind.material, function (sprite) {
-    leña += 1
+    lena += 3
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -324,8 +517,11 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+// INICIO VAR & POSICIONAMIENTO
 let tronco2: Sprite = null
 let tronco1: Sprite = null
+let menuInventario: miniMenu.MenuSprite = null
+let cofreInventario: Sprite = null
 let arbol2: Sprite = null
 let arbol: Sprite = null
 let nena: Sprite = null
@@ -337,13 +533,20 @@ let direccionNena = 0
 let reapareceArbol2 = 0
 let reapareceArbol1 = 0
 let cercaCofre = 0
-let caballos = 0
-let gallinas = 0
-let patatas = 0
-let huevos = 0
-let cabras = 0
-let leña = 0
 let inventarioAbierto = 0
+let lena = 0
+let cabras = 0
+let huevos = 0
+let patatas = 0
+let gallinas = 0
+let caballos = 0
+caballos = 0
+gallinas = 0
+patatas = 0
+huevos = 0
+cabras = 0
+lena = 0
+inventarioAbierto = 0
 cercaCofre = 0
 reapareceArbol1 = 0
 reapareceArbol2 = 0
@@ -364,8 +567,9 @@ arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
 arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
-let cofreInventario = sprites.create(assets.image`cofre`, SpriteKind.inventario)
+cofreInventario = sprites.create(assets.image`cofre`, SpriteKind.inventario)
 tiles.placeOnTile(cofreInventario, tiles.getTileLocation(0, 6))
+// DELETE TRONCOS & RESTART ARBOLES
 game.onUpdateInterval(500, function () {
     if (esArbol == 0 && game.runtime() > reapareceArbol1) {
         sprites.destroy(tronco1)
