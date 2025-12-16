@@ -289,14 +289,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 sprites.destroy(arbol)
                 tronco1 = sprites.create(assets.image`miImagen13`, SpriteKind.material)
                 tiles.placeOnTile(tronco1, tiles.getTileLocation(6, 6))
-                arbol.setImage(assets.image`miImagen13`)
                 esArbol = 0
                 golpesArbol = 0
-                pause(5000)
-                sprites.destroy(tronco1)
-                arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
-                tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
-                esArbol = 1
+                reapareceArbol1 = game.runtime() + 5000
             }
         }
     }
@@ -307,14 +302,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 sprites.destroy(arbol2)
                 tronco2 = sprites.create(assets.image`miImagen13`, SpriteKind.material)
                 tiles.placeOnTile(tronco2, tiles.getTileLocation(8, 7))
-                arbol2.setImage(assets.image`miImagen13`)
                 esArbol2 = 0
                 golpesArbol2 = 0
-                pause(5000)
-                sprites.destroy(tronco2)
-                arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
-                tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
-                esArbol2 = 1
+                reapareceArbol2 = game.runtime() + 5000
             }
         }
     }
@@ -337,6 +327,10 @@ let golpesArbol2 = 0
 let esArbol = 0
 let golpesArbol = 0
 let direccionNena = 0
+let reapareceArbol2 = 0
+let reapareceArbol1 = 0
+reapareceArbol1 = 0
+reapareceArbol2 = 0
 direccionNena = 0
 golpesArbol = 0
 esArbol = 1
@@ -354,3 +348,19 @@ arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
 arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
+game.onUpdateInterval(500, function () {
+    if (esArbol == 0 && game.runtime() > reapareceArbol1) {
+        sprites.destroy(tronco1)
+        arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
+        tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
+        esArbol = 1
+    }
+})
+game.onUpdateInterval(500, function () {
+    if (esArbol2 == 0 && game.runtime() > reapareceArbol2) {
+        sprites.destroy(tronco2)
+        arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
+        tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
+        esArbol2 = 1
+    }
+})
