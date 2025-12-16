@@ -4,6 +4,7 @@ namespace SpriteKind {
     export const comerciante = SpriteKind.create()
     export const portal = SpriteKind.create()
     export const material = SpriteKind.create()
+    export const inventario = SpriteKind.create()
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -309,6 +310,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.inventario, function (sprite, otherSprite) {
+    cercaCofre = 1
+})
+sprites.onDestroyed(SpriteKind.material, function (sprite) {
+    leña += 1
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     nena,
@@ -329,6 +336,7 @@ let golpesArbol = 0
 let direccionNena = 0
 let reapareceArbol2 = 0
 let reapareceArbol1 = 0
+let cercaCofre = 0
 let caballos = 0
 let gallinas = 0
 let patatas = 0
@@ -336,7 +344,7 @@ let huevos = 0
 let cabras = 0
 let leña = 0
 let inventarioAbierto = 0
-let cercaCofre = 0
+cercaCofre = 0
 reapareceArbol1 = 0
 reapareceArbol2 = 0
 direccionNena = 0
@@ -356,8 +364,8 @@ arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
 arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
-let cofreInventario = sprites.create(assets.image`cofre`, SpriteKind.MiniMenu)
-tiles.placeOnTile(cofreInventario, tiles.getTileLocation(0, 5))
+let cofreInventario = sprites.create(assets.image`cofre`, SpriteKind.inventario)
+tiles.placeOnTile(cofreInventario, tiles.getTileLocation(0, 6))
 game.onUpdateInterval(500, function () {
     if (esArbol == 0 && game.runtime() > reapareceArbol1) {
         sprites.destroy(tronco1)
@@ -372,5 +380,10 @@ game.onUpdateInterval(500, function () {
         arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
         tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
         esArbol2 = 1
+    }
+})
+game.onUpdateInterval(500, function () {
+    if (!(nena.overlapsWith(cofreInventario))) {
+        cercaCofre = 0
     }
 })
