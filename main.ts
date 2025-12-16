@@ -472,6 +472,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             golpesArbol += 1
             if (golpesArbol == 3) {
                 sprites.destroy(arbol)
+                lena += 3
                 tronco1 = sprites.create(assets.image`miImagen13`, SpriteKind.material)
                 tiles.placeOnTile(tronco1, tiles.getTileLocation(6, 6))
                 esArbol = 0
@@ -485,6 +486,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             golpesArbol2 += 1
             if (golpesArbol2 == 3) {
                 sprites.destroy(arbol2)
+                lena += 3
                 tronco2 = sprites.create(assets.image`miImagen13`, SpriteKind.material)
                 tiles.placeOnTile(tronco2, tiles.getTileLocation(8, 7))
                 esArbol2 = 0
@@ -506,10 +508,6 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.inventario, function (sprite, otherSprite) {
     cercaCofre = 1
-})
-// ACUMULACIÓN LEÑA
-sprites.onDestroyed(SpriteKind.material, function (sprite) {
-    lena += 3
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
