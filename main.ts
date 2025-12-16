@@ -329,6 +329,14 @@ let golpesArbol = 0
 let direccionNena = 0
 let reapareceArbol2 = 0
 let reapareceArbol1 = 0
+let caballos = 0
+let gallinas = 0
+let patatas = 0
+let huevos = 0
+let cabras = 0
+let leña = 0
+let inventarioAbierto = 0
+let cercaCofre = 0
 reapareceArbol1 = 0
 reapareceArbol2 = 0
 direccionNena = 0
@@ -341,13 +349,15 @@ tiles.setCurrentTilemap(tilemap`nivel7`)
 nena = sprites.create(assets.image`nena-front`, SpriteKind.Player)
 controller.moveSprite(nena, 100, 100)
 nena.setStayInScreen(true)
-tiles.placeOnTile(nena, tiles.getTileLocation(4, 5))
+tiles.placeOnTile(nena, tiles.getTileLocation(8, 5))
 let trader = sprites.create(assets.image`comerciante`, SpriteKind.comerciante)
-tiles.placeOnTile(trader, tiles.getTileLocation(1, 5))
+tiles.placeOnTile(trader, tiles.getTileLocation(3, 5))
 arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
 arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
+let cofreInventario = sprites.create(assets.image`cofre`, SpriteKind.MiniMenu)
+tiles.placeOnTile(cofreInventario, tiles.getTileLocation(0, 5))
 game.onUpdateInterval(500, function () {
     if (esArbol == 0 && game.runtime() > reapareceArbol1) {
         sprites.destroy(tronco1)
