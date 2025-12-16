@@ -6,6 +6,7 @@ class SpriteKind:
     portal = SpriteKind.create()
     material = SpriteKind.create()
     inventario = SpriteKind.create()
+# MOVIMIENTOS PERSONAJE
 
 def on_down_pressed():
     global direccionNena
@@ -40,8 +41,65 @@ def on_left_pressed():
     direccionNena = 1
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
+#COSTES Y FUNCIONES DEL TRADEO
+costes_tradeo = {
+    "gallina": 6,
+    "cabra": 5,
+    "caballo": 12,
+    "huevo": 3.0,
+    "patata": 2.0
+}
+
+suma_inventario = {
+    "gallina": 1,
+    "cabra": 1,
+    "caballo": 1,
+    "huevo": 12,
+    "patata": 1.5
+}
+
+#FUNCIONES PARA TRADEO DIRECTO
+def trade_gallina(lena):
+    return (lena - 6)
+
+def trade_cabra(lena):
+    return (lena - 5)
+
+def trade_caballo(lena):
+    return (lena - 12)
+
+def trade_huevo(lena):
+    return (lena - 3)
+
+def trade_patata(lena):
+    return (lena - 2)
+
+#FUNCIONES AÑADIR AL INVENTARIO
+def anadir_gallina():
+    global gallinas
+    gallinas += 1
+
+def anadir_cabra():
+    global cabras
+    cabras += 1
+
+def anadir_caballo():
+    global caballos
+    caballos += 1
+
+def anadir_huevos():
+    global huevos
+    huevos += 12
+
+def anadir_patata():
+    global patatas
+    patatas += 1.5
+
+# LÓGICA BOTON A
+
 def on_a_pressed():
-    global inventarioAbierto, menuInventario, golpesArbol, tronco1, esArbol, reapareceArbol1, golpesArbol2, tronco2, esArbol2, reapareceArbol2
+    global inventarioAbierto, menuInventario, golpesArbol, lena, tronco1, esArbol, reapareceArbol1, golpesArbol2, tronco2, esArbol2, reapareceArbol2
+    # ANIMACIONES PERS. TALAR
     if direccionNena == 1:
         animation.run_image_animation(nena,
             [img("""
@@ -288,86 +346,91 @@ def on_a_pressed():
                     """)],
             100,
             False)
+    # LÓGICA APERTURA INVENTARIO
     if cercaCofre == 1:
         if inventarioAbierto == 0:
+            cofreInventario.set_image(assets.image("""
+                cofreAbierto
+                """))
             inventarioAbierto = 1
-            menuInventario = miniMenu.create_menu_from_array([miniMenu.create_menu_item(huevos,
+            controller.move_sprite(nena, 0, 0)
+            menuInventario = miniMenu.create_menu_from_array([miniMenu.create_menu_item("Huevos: " + str(huevos),
                         img("""
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
+                            . . 2 2 b b b b b . . . . . . .
+                            . 2 b 4 4 4 4 4 4 b . . . . . .
+                            2 2 4 4 4 4 d d 4 4 b . . . . .
+                            2 b 4 4 4 4 4 4 d 4 b . . . . .
+                            2 b 4 4 4 4 4 4 4 d 4 b . . . .
+                            2 b 4 4 4 4 4 4 4 4 4 b . . . .
+                            2 b 4 4 4 4 4 4 4 4 4 e . . . .
+                            2 2 b 4 4 4 4 4 4 4 b e . . . .
+                            . 2 b b b 4 4 4 b b b e . . . .
+                            . . e b b b b b b b e e . . . .
+                            . . . e e b 4 4 b e e e b . . .
+                            . . . . . e e e e e e b d b b .
+                            . . . . . . . . . . . b 1 1 1 b
+                            . . . . . . . . . . . c 1 d d b
+                            . . . . . . . . . . . c 1 b c .
+                            . . . . . . . . . . . . c c . .
+                            """)),
+                    miniMenu.create_menu_item("Gallinas: " + str(gallinas),
+                        img("""
+                            . . . . . . b b b b a a . . . .
+                            . . . . b b d d d 3 3 3 a a . .
+                            . . . b d d d 3 3 3 3 3 3 a a .
+                            . . b d d 3 3 3 3 3 3 3 3 3 a .
+                            . b 3 d 3 3 3 3 3 b 3 3 3 3 a b
+                            . b 3 3 3 3 3 a a 3 3 3 3 3 a b
+                            b 3 3 3 3 3 a a 3 3 3 3 d a 4 b
+                            b 3 3 3 3 b a 3 3 3 3 3 d a 4 b
+                            b 3 3 3 3 3 3 3 3 3 3 d a 4 4 e
+                            a 3 3 3 3 3 3 3 3 3 d a 4 4 4 e
+                            a 3 3 3 3 3 3 3 d d a 4 4 4 e .
+                            a a 3 3 3 d d d a a 4 4 4 e e .
+                            . e a a a a a a 4 4 4 4 e e . .
+                            . . e e b b 4 4 4 4 b e e . . .
+                            . . . e e e e e e e e . . . . .
                             . . . . . . . . . . . . . . . .
                             """)),
-                    miniMenu.create_menu_item(gallinas,
+                    miniMenu.create_menu_item("Cabras: " + str(cabras),
                         img("""
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
+                            . . . . . . b b b b . . . . . .
+                            . . . . . . b 4 4 4 b . . . . .
+                            . . . . . . b b 4 4 4 b . . . .
+                            . . . . . b 4 b b b 4 4 b . . .
+                            . . . . b d 5 5 5 4 b 4 4 b . .
+                            . . . . b 3 2 3 5 5 4 e 4 4 b .
+                            . . . b d 2 2 2 5 7 5 4 e 4 4 e
+                            . . . b 5 3 2 3 5 5 5 5 e e e e
+                            . . b d 7 5 5 5 3 2 3 5 5 e e e
+                            . . b 5 5 5 5 5 2 2 2 5 5 d e e
+                            . b 3 2 3 5 7 5 3 2 3 5 d d e 4
+                            . b 2 2 2 5 5 5 5 5 5 d d e 4 .
+                            b d 3 2 d 5 5 5 d d d 4 4 . . .
+                            b 5 5 5 5 d d 4 4 4 4 . . . . .
+                            4 d d d 4 4 4 . . . . . . . . .
+                            4 4 4 4 . . . . . . . . . . . .
                             """)),
-                    miniMenu.create_menu_item(cabras,
+                    miniMenu.create_menu_item("Caballos: " + str(caballos),
                         img("""
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
+                            4 4 4 . . 4 4 4 4 4 . . . . . .
+                            4 5 5 4 4 5 5 5 5 5 4 4 . . . .
+                            b 4 5 5 1 5 1 1 1 5 5 5 4 . . .
+                            . b 5 5 5 5 1 1 5 5 1 1 5 4 . .
+                            . b d 5 5 5 5 5 5 5 5 1 1 5 4 .
+                            b 4 5 5 5 5 5 5 5 5 5 5 1 5 4 .
+                            c d 5 5 5 5 5 5 5 5 5 5 5 5 5 4
+                            c d 4 5 5 5 5 5 5 5 5 5 5 1 5 4
+                            c 4 5 5 5 d 5 5 5 5 5 5 5 5 5 4
+                            c 4 d 5 4 5 d 5 5 5 5 5 5 5 5 4
+                            . c 4 5 5 5 5 d d d 5 5 5 5 5 b
+                            . c 4 d 5 4 5 d 4 4 d 5 5 5 4 c
+                            . . c 4 4 d 4 4 4 4 4 d d 5 d c
+                            . . . c 4 4 4 4 4 4 4 4 5 5 5 4
+                            . . . . c c b 4 4 4 b b 4 5 4 4
+                            . . . . . . c c c c c c b b 4 .
                             """)),
-                    miniMenu.create_menu_item(caballos,
-                        img("""
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            """)),
-                    miniMenu.create_menu_item(lena,
+                    miniMenu.create_menu_item("Leña: " + str(lena),
                         img("""
                             ........................
                             ..........bbbb..........
@@ -394,30 +457,86 @@ def on_a_pressed():
                             ......ee77eeee77ecee....
                             ......ee6eeeeee6eef.....
                             """)),
-                    miniMenu.create_menu_item(patatas,
+                    miniMenu.create_menu_item("Patatas: " + str(patatas),
                         img("""
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
-                            . . . . . . . . . . . . . . . .
+                            . . . . . . 2 2 2 2 . . . . . .
+                            . . . . 2 2 3 3 3 3 2 e . . . .
+                            . . . 2 3 d 1 1 d d 3 2 e . . .
+                            . . 2 3 1 d 3 3 3 d d 3 e . . .
+                            . 2 3 1 3 3 3 3 3 d 1 3 b e . .
+                            . 2 1 d 3 3 3 3 d 3 3 1 3 b b .
+                            2 3 1 d 3 3 1 1 3 3 3 1 3 4 b b
+                            2 d 3 3 d 1 3 1 3 3 3 1 3 4 4 b
+                            2 d 3 3 3 1 3 1 3 3 3 1 b 4 4 e
+                            2 d 3 3 3 1 1 3 3 3 3 1 b 4 4 e
+                            e d 3 3 3 3 d 3 3 3 d d b 4 4 e
+                            e d d 3 3 3 d 3 3 3 1 3 b 4 b e
+                            e 3 d 3 3 1 d d 3 d 1 b b e e .
+                            . e 3 1 1 d d 1 1 1 b b e e e .
+                            . . e 3 3 3 3 3 3 b e e e e . .
+                            . . . e e e e e e e e e e . . .
                             """))])
+            menuInventario.set_dimensions(130, 90)
+            menuInventario.z = 4
+            menuInventario.set_frame(img("""
+                999999999999999999999999999999999999999999999999
+                999988899999999999998889999999999999888999999999
+                998888888999888899888888899988889988888889998889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988688888888888888888888888888888888888886888889
+                988688888888688888888888888888888868888866888889
+                988668888888668888888888888888888868888886888689
+                966688888888688888888888888688888866888866688689
+                986668888886668888688888888688888668888866886689
+                988666888888688888688888886668888866888666688689
+                966688888866666888668888886688888866688866886669
+                986666888866668886666888866666886668888666686689
+                986666888866668888668888886688888666888666666669
+                966668888666666886666888866666886666866666666669
+                986688886666668886666888666668886666666666666669
+                966666688666666666666666666666666666666666666669
+                966666886666666666666666666666666666666666666669
+                966666666666666666666666666666666666666666666669
+                999999999999999999999999999999999999999999999999
+                """))
+            menuInventario.set_title("Inventario")
+            menuInventario.set_position(scene.screen_width() / 2, scene.screen_height() / 2)
+    # LÓGICA TALA ÁRBOLES
     if esArbol == 1:
         if nena.overlaps_with(arbol):
             golpesArbol += 1
             if golpesArbol == 3:
                 sprites.destroy(arbol)
+                lena += 3
                 tronco1 = sprites.create(assets.image("""
                         miImagen13
                         """),
@@ -431,6 +550,7 @@ def on_a_pressed():
             golpesArbol2 += 1
             if golpesArbol2 == 3:
                 sprites.destroy(arbol2)
+                lena += 3
                 tronco2 = sprites.create(assets.image("""
                         miImagen13
                         """),
@@ -441,21 +561,24 @@ def on_a_pressed():
                 reapareceArbol2 = game.runtime() + 5000
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
+# lÓGICA BOTÓN B
+
 def on_b_pressed():
     global inventarioAbierto
+    # LÓGICA CIERRE INVENTARIO
     if inventarioAbierto == 1:
         inventarioAbierto = 0
+        menuInventario.close()
+        cofreInventario.set_image(assets.image("""
+            cofre
+            """))
+        controller.move_sprite(nena, 100, 100)
 controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
 
 def on_on_overlap(sprite, otherSprite):
     global cercaCofre
     cercaCofre = 1
 sprites.on_overlap(SpriteKind.player, SpriteKind.inventario, on_on_overlap)
-
-def on_on_destroyed(sprite2):
-    global lena
-    lena += 1
-sprites.on_destroyed(SpriteKind.material, on_on_destroyed)
 
 def on_up_pressed():
     animation.run_image_animation(nena,
@@ -466,9 +589,11 @@ def on_up_pressed():
         False)
 controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
 
+# INICIO VAR & POSICIONAMIENTO
 tronco2: Sprite = None
 tronco1: Sprite = None
 menuInventario: miniMenu.MenuSprite = None
+cofreInventario: Sprite = None
 arbol2: Sprite = None
 arbol: Sprite = None
 nena: Sprite = None
@@ -531,6 +656,7 @@ cofreInventario = sprites.create(assets.image("""
     cofre
     """), SpriteKind.inventario)
 tiles.place_on_tile(cofreInventario, tiles.get_tile_location(0, 6))
+# DELETE TRONCOS & RESTART ARBOLES
 
 def on_update_interval():
     global arbol, esArbol
