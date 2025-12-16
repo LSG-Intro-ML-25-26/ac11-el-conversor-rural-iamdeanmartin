@@ -6,6 +6,63 @@ class SpriteKind:
     portal = SpriteKind.create()
     material = SpriteKind.create()
     inventario = SpriteKind.create()
+
+#COSTES Y FUNCIONES DEL TRADEO
+costes_tradeo = {
+    "gallina": 6,
+    "cabra": 5,
+    "caballo": 12,
+    "huevo": 3.0,
+    "patata": 2.0
+}
+
+suma_inventario = {
+    "gallina": 1,
+    "cabra": 1,
+    "caballo": 1,
+    "huevo": 12,
+    "patata": 1.5
+}
+
+
+#FUNCIONES PARA TRADEO DIRECTO
+def trade_gallina(lena):
+    return (lena - 6)
+
+def trade_cabra(lena):
+    return (lena - 5)
+
+def trade_caballo(lena):
+    return (lena - 12)
+
+def trade_huevo(lena):
+    return (lena - 3)
+
+def trade_patata(lena):
+    return (lena - 2)
+
+#FUNCIONES AÑADIR AL INVENTARIO
+def anadir_gallina():
+    global gallinas
+    gallinas += 1
+
+def anadir_cabra():
+    global cabras
+    cabras += 1
+
+
+def anadir_caballo():
+    global caballos
+    caballos += 1
+
+def anadir_huevos():
+    global huevos
+    huevos += 12
+
+def anadir_patata():
+    global patatas
+    patatas += 1.5
+
 # MOVIMIENTOS PERSONAJE
 
 def on_down_pressed():
@@ -40,60 +97,6 @@ def on_left_pressed():
         False)
     direccionNena = 1
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
-
-#COSTES Y FUNCIONES DEL TRADEO
-costes_tradeo = {
-    "gallina": 6,
-    "cabra": 5,
-    "caballo": 12,
-    "huevo": 3.0,
-    "patata": 2.0
-}
-
-suma_inventario = {
-    "gallina": 1,
-    "cabra": 1,
-    "caballo": 1,
-    "huevo": 12,
-    "patata": 1.5
-}
-
-#FUNCIONES PARA TRADEO DIRECTO
-def trade_gallina(lena):
-    return (lena - 6)
-
-def trade_cabra(lena):
-    return (lena - 5)
-
-def trade_caballo(lena):
-    return (lena - 12)
-
-def trade_huevo(lena):
-    return (lena - 3)
-
-def trade_patata(lena):
-    return (lena - 2)
-
-#FUNCIONES AÑADIR AL INVENTARIO
-def anadir_gallina():
-    global gallinas
-    gallinas += 1
-
-def anadir_cabra():
-    global cabras
-    cabras += 1
-
-def anadir_caballo():
-    global caballos
-    caballos += 1
-
-def anadir_huevos():
-    global huevos
-    huevos += 12
-
-def anadir_patata():
-    global patatas
-    patatas += 1.5
 
 # LÓGICA BOTON A
 
