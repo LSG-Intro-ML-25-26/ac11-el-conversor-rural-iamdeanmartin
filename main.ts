@@ -30,11 +30,14 @@ function trade_patata (lena: number) {
 }
 // FUNCIÓN PARA TRADEO Y MENSAJE
 function comprar_objeto () {
-    let indice_seleccionado = 0
+    menu_tradeo.onSelectionChanged(function (selection, selectedIndex) {
+        indice_seleccionado = selectedIndex
+    })
     if (indice_seleccionado == 0) {
         if (lena >= 3) {
             lena = trade_huevo(lena)
             anadir_huevos()
+            game.showLongText("Huevos intercambiados con éxito", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -42,6 +45,7 @@ function comprar_objeto () {
         if (lena >= 6) {
             lena = trade_gallina(lena)
             anadir_gallina()
+            game.showLongText("Gallina intercambiada con éxito", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -49,6 +53,7 @@ function comprar_objeto () {
         if (lena >= 5) {
             lena = trade_cabra(lena)
             anadir_cabra()
+            game.showLongText("Cabra intercambiada con éxito", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -56,6 +61,7 @@ function comprar_objeto () {
         if (lena >= 12) {
             lena = trade_caballo(lena)
             anadir_caballo()
+            game.showLongText("Caballo intercambiado con éxito", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -63,6 +69,7 @@ function comprar_objeto () {
         if (lena >= 2) {
             lena = trade_patata(lena)
             anadir_patata()
+            game.showLongText("Patatas intercambiadas con éxito", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -591,6 +598,7 @@ function trade_cabra (lena: number) {
 let tronco2: Sprite = null
 let tronco1: Sprite = null
 let menu_inventario: miniMenu.MenuSprite = null
+let indice_seleccionado = 0
 let menu_tradeo: miniMenu.MenuSprite = null
 let cofre_inventario: Sprite = null
 let arbol2: Sprite = null
