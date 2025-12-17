@@ -23,10 +23,50 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     500,
     false
     )
-    direccionNena = 0
+    direccion_nena = 0
 })
 function trade_patata (lena: number) {
     return lena - 2
+}
+// FUNCIÓN PARA TRADEO Y MENSAJE
+function comprar_objeto () {
+    let indice_seleccionado = 0
+    if (indice_seleccionado == 0) {
+        if (lena >= 3) {
+            lena = trade_huevo(lena)
+            anadir_huevos()
+        } else {
+            game.showLongText("Material Insuficiente", DialogLayout.Bottom)
+        }
+    } else if (indice_seleccionado == 1) {
+        if (lena >= 6) {
+            lena = trade_gallina(lena)
+            anadir_gallina()
+        } else {
+            game.showLongText("Material Insuficiente", DialogLayout.Bottom)
+        }
+    } else if (indice_seleccionado == 2) {
+        if (lena >= 5) {
+            lena = trade_cabra(lena)
+            anadir_cabra()
+        } else {
+            game.showLongText("Material Insuficiente", DialogLayout.Bottom)
+        }
+    } else if (indice_seleccionado == 3) {
+        if (lena >= 12) {
+            lena = trade_caballo(lena)
+            anadir_caballo()
+        } else {
+            game.showLongText("Material Insuficiente", DialogLayout.Bottom)
+        }
+    } else if (indice_seleccionado == 4) {
+        if (lena >= 2) {
+            lena = trade_patata(lena)
+            anadir_patata()
+        } else {
+            game.showLongText("Material Insuficiente", DialogLayout.Bottom)
+        }
+    }
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -35,7 +75,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     500,
     false
     )
-    direccionNena = 2
+    direccion_nena = 2
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -44,12 +84,15 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     500,
     false
     )
-    direccionNena = 1
+    direccion_nena = 1
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.comerciante, function (sprite, otherSprite) {
+    cerca_trader = 1
 })
 // LÓGICA BOTON A
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     // ANIMACIONES PERS. TALAR
-    if (direccionNena == 1) {
+    if (direccion_nena == 1) {
         animation.runImageAnimation(
         nena,
         [img`
@@ -132,7 +175,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         false
         )
     }
-    if (direccionNena == 0) {
+    if (direccion_nena == 0) {
         animation.runImageAnimation(
         nena,
         [img`
@@ -215,7 +258,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         false
         )
     }
-    if (direccionNena == 2) {
+    if (direccion_nena == 2) {
         animation.runImageAnimation(
         nena,
         [img`
@@ -298,13 +341,178 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         false
         )
     }
+    if (trade_abierto == 1) {
+        comprar_objeto()
+    }
     // LÓGICA APERTURA INVENTARIO
-    if (cercaCofre == 1) {
-        if (inventarioAbierto == 0) {
-            cofreInventario.setImage(assets.image`cofreAbierto`)
-            inventarioAbierto = 1
+    if (cerca_trader == 1) {
+        if (trade_abierto == 0) {
             controller.moveSprite(nena, 0, 0)
-            menuInventario = miniMenu.createMenuFromArray([
+            menu_tradeo = miniMenu.createMenuFromArray([
+            miniMenu.createMenuItem("12 x ", img`
+                . . 2 2 b b b b b . . . . . . . 
+                . 2 b 4 4 4 4 4 4 b . . . . . . 
+                2 2 4 4 4 4 d d 4 4 b . . . . . 
+                2 b 4 4 4 4 4 4 d 4 b . . . . . 
+                2 b 4 4 4 4 4 4 4 d 4 b . . . . 
+                2 b 4 4 4 4 4 4 4 4 4 b . . . . 
+                2 b 4 4 4 4 4 4 4 4 4 e . . . . 
+                2 2 b 4 4 4 4 4 4 4 b e . . . . 
+                . 2 b b b 4 4 4 b b b e . . . . 
+                . . e b b b b b b b e e . . . . 
+                . . . e e b 4 4 b e e e b . . . 
+                . . . . . e e e e e e b d b b . 
+                . . . . . . . . . . . b 1 1 1 b 
+                . . . . . . . . . . . c 1 d d b 
+                . . . . . . . . . . . c 1 b c . 
+                . . . . . . . . . . . . c c . . 
+                `),
+            miniMenu.createMenuItem("1 x", img`
+                . . . . . . b b b b a a . . . . 
+                . . . . b b d d d 3 3 3 a a . . 
+                . . . b d d d 3 3 3 3 3 3 a a . 
+                . . b d d 3 3 3 3 3 3 3 3 3 a . 
+                . b 3 d 3 3 3 3 3 b 3 3 3 3 a b 
+                . b 3 3 3 3 3 a a 3 3 3 3 3 a b 
+                b 3 3 3 3 3 a a 3 3 3 3 d a 4 b 
+                b 3 3 3 3 b a 3 3 3 3 3 d a 4 b 
+                b 3 3 3 3 3 3 3 3 3 3 d a 4 4 e 
+                a 3 3 3 3 3 3 3 3 3 d a 4 4 4 e 
+                a 3 3 3 3 3 3 3 d d a 4 4 4 e . 
+                a a 3 3 3 d d d a a 4 4 4 e e . 
+                . e a a a a a a 4 4 4 4 e e . . 
+                . . e e b b 4 4 4 4 b e e . . . 
+                . . . e e e e e e e e . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `),
+            miniMenu.createMenuItem("1 x ", img`
+                . . . . . . b b b b . . . . . . 
+                . . . . . . b 4 4 4 b . . . . . 
+                . . . . . . b b 4 4 4 b . . . . 
+                . . . . . b 4 b b b 4 4 b . . . 
+                . . . . b d 5 5 5 4 b 4 4 b . . 
+                . . . . b 3 2 3 5 5 4 e 4 4 b . 
+                . . . b d 2 2 2 5 7 5 4 e 4 4 e 
+                . . . b 5 3 2 3 5 5 5 5 e e e e 
+                . . b d 7 5 5 5 3 2 3 5 5 e e e 
+                . . b 5 5 5 5 5 2 2 2 5 5 d e e 
+                . b 3 2 3 5 7 5 3 2 3 5 d d e 4 
+                . b 2 2 2 5 5 5 5 5 5 d d e 4 . 
+                b d 3 2 d 5 5 5 d d d 4 4 . . . 
+                b 5 5 5 5 d d 4 4 4 4 . . . . . 
+                4 d d d 4 4 4 . . . . . . . . . 
+                4 4 4 4 . . . . . . . . . . . . 
+                `),
+            miniMenu.createMenuItem("1 x ", img`
+                4 4 4 . . 4 4 4 4 4 . . . . . . 
+                4 5 5 4 4 5 5 5 5 5 4 4 . . . . 
+                b 4 5 5 1 5 1 1 1 5 5 5 4 . . . 
+                . b 5 5 5 5 1 1 5 5 1 1 5 4 . . 
+                . b d 5 5 5 5 5 5 5 5 1 1 5 4 . 
+                b 4 5 5 5 5 5 5 5 5 5 5 1 5 4 . 
+                c d 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+                c d 4 5 5 5 5 5 5 5 5 5 5 1 5 4 
+                c 4 5 5 5 d 5 5 5 5 5 5 5 5 5 4 
+                c 4 d 5 4 5 d 5 5 5 5 5 5 5 5 4 
+                . c 4 5 5 5 5 d d d 5 5 5 5 5 b 
+                . c 4 d 5 4 5 d 4 4 d 5 5 5 4 c 
+                . . c 4 4 d 4 4 4 4 4 d d 5 d c 
+                . . . c 4 4 4 4 4 4 4 4 5 5 5 4 
+                . . . . c c b 4 4 4 b b 4 5 4 4 
+                . . . . . . c c c c c c b b 4 . 
+                `),
+            miniMenu.createMenuItem("1.5 x", img`
+                ........................
+                ..........bbbb..........
+                ........bbddddbb........
+                .......bddbbbbddb.......
+                ......bdbbddddbbdb......
+                .....bdbbdbbbbdbbdb.....
+                .....bdbdbddddbdbdb.....
+                .....cdbbdbbbbdbbdc.....
+                .....cbdbbddddbbdbc.....
+                .....efbddbbbbddbce.....
+                .....eeffbddddbccee.....
+                .....eeeeffcccceee......
+                .....ceeeeeeeeeeee......
+                .....ceeeeeeeeeeee......
+                .....feeeeeeeeeeee......
+                .....cceeeeeeeeeee......
+                ......feeeeeeeeeee......
+                .....6fceeeeeeeeee6.....
+                ....6776eeeeeeeee676....
+                ...6777666eeee6666776...
+                ..67768e67766777667776..
+                ...668ee7768867788666...
+                ......ee77eeee77ecee....
+                ......ee6eeeeee6eef.....
+                `)
+            ])
+            trade_abierto = 1
+            menu_tradeo.setTitle("Comercio Oscuro")
+            menu_tradeo.setFrame(img`
+                999999999999999999999999999999999999999999999999
+                999988899999999999998889999999999999888999999999
+                998888888999888899888888899988889988888889998889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988888888888888888888888888888888888888888888889
+                988688888888888888888888888888888888888886888889
+                988688888888688888888888888888888868888866888889
+                988668888888668888888888888888888868888886888689
+                966688888888688888888888888688888866888866688689
+                986668888886668888688888888688888668888866886689
+                988666888888688888688888886668888866888666688689
+                966688888866666888668888886688888866688866886669
+                986666888866668886666888866666886668888666686689
+                986666888866668888668888886688888666888666666669
+                966668888666666886666888866666886666866666666669
+                986688886666668886666888666668886666666666666669
+                966666688666666666666666666666666666666666666669
+                966666886666666666666666666666666666666666666669
+                966666666666666666666666666666666666666666666669
+                999999999999999999999999999999999999999999999999
+                `)
+            menu_tradeo.z = 4
+            menu_tradeo.setDimensions(130, 90)
+            menu_tradeo.setPosition(scene.screenWidth() / 2, scene.screenHeight() / 2)
+        }
+    }
+    // LÓGICA APERTURA INVENTARIO
+    if (cerca_cofre == 1) {
+        if (inventario_abierto == 0) {
+            trade_abierto = 0
+            cofre_inventario.setImage(assets.image`cofreAbierto`)
+            inventario_abierto = 1
+            controller.moveSprite(nena, 0, 0)
+            menu_inventario = miniMenu.createMenuFromArray([
             miniMenu.createMenuItem("Huevos: " + ("" + huevos), img`
                 . . 2 2 b b b b b . . . . . . . 
                 . 2 b 4 4 4 4 4 4 b . . . . . . 
@@ -422,9 +630,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 . . . e e e e e e e e e e . . . 
                 `)
             ])
-            menuInventario.setDimensions(130, 90)
-            menuInventario.z = 4
-            menuInventario.setFrame(img`
+            menu_inventario.setDimensions(130, 90)
+            menu_inventario.z = 4
+            menu_inventario.setFrame(img`
                 999999999999999999999999999999999999999999999999
                 999988899999999999998889999999999999888999999999
                 998888888999888899888888899988889988888889998889
@@ -474,36 +682,36 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 966666666666666666666666666666666666666666666669
                 999999999999999999999999999999999999999999999999
                 `)
-            menuInventario.setTitle("Inventario")
-            menuInventario.setPosition(scene.screenWidth() / 2, scene.screenHeight() / 2)
+            menu_inventario.setTitle("Inventario")
+            menu_inventario.setPosition(scene.screenWidth() / 2, scene.screenHeight() / 2)
         }
     }
     // LÓGICA TALA ÁRBOLES
-    if (esArbol == 1) {
+    if (es_arbol == 1) {
         if (nena.overlapsWith(arbol)) {
-            golpesArbol += 1
-            if (golpesArbol == 3) {
+            golpes_arbol += 1
+            if (golpes_arbol == 3) {
                 sprites.destroy(arbol)
                 lena += 3
                 tronco1 = sprites.create(assets.image`miImagen13`, SpriteKind.material)
                 tiles.placeOnTile(tronco1, tiles.getTileLocation(6, 6))
-                esArbol = 0
-                golpesArbol = 0
-                reapareceArbol1 = game.runtime() + 5000
+                es_arbol = 0
+                golpes_arbol = 0
+                reaparece_arbol1 = game.runtime() + 5000
             }
         }
     }
-    if (esArbol2 == 1) {
+    if (es_arbol2 == 1) {
         if (nena.overlapsWith(arbol2)) {
-            golpesArbol2 += 1
-            if (golpesArbol2 == 3) {
+            golpes_arbol2 += 1
+            if (golpes_arbol2 == 3) {
                 sprites.destroy(arbol2)
                 lena += 3
                 tronco2 = sprites.create(assets.image`miImagen13`, SpriteKind.material)
                 tiles.placeOnTile(tronco2, tiles.getTileLocation(8, 7))
-                esArbol2 = 0
-                golpesArbol2 = 0
-                reapareceArbol2 = game.runtime() + 5000
+                es_arbol2 = 0
+                golpes_arbol2 = 0
+                reaparece_arbol2 = game.runtime() + 5000
             }
         }
     }
@@ -511,10 +719,16 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 // lÓGICA BOTÓN B
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     // LÓGICA CIERRE INVENTARIO
-    if (inventarioAbierto == 1) {
-        inventarioAbierto = 0
-        menuInventario.close()
-        cofreInventario.setImage(assets.image`cofre`)
+    if (inventario_abierto == 1) {
+        inventario_abierto = 0
+        menu_inventario.close()
+        cofre_inventario.setImage(assets.image`cofre`)
+        controller.moveSprite(nena, 100, 100)
+    }
+    // LÓGICA CIERRE INVENTARIO
+    if (trade_abierto == 1) {
+        trade_abierto = 0
+        menu_tradeo.close()
         controller.moveSprite(nena, 100, 100)
     }
 })
@@ -523,7 +737,7 @@ function anadir_gallina () {
     gallinas += 1
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.inventario, function (sprite, otherSprite) {
-    cercaCofre = 1
+    cerca_cofre = 1
 })
 // FUNCIONES PARA TRADEO DIRECTO
 function trade_gallina (lena: number) {
@@ -554,26 +768,29 @@ function trade_cabra (lena: number) {
 }
 let tronco2: Sprite = null
 let tronco1: Sprite = null
-let menuInventario: miniMenu.MenuSprite = null
-let cofreInventario: Sprite = null
+let menu_inventario: miniMenu.MenuSprite = null
+let menu_tradeo: miniMenu.MenuSprite = null
+let cofre_inventario: Sprite = null
 let arbol2: Sprite = null
 let arbol: Sprite = null
 let nena: Sprite = null
-let esArbol2 = 0
-let golpesArbol2 = 0
-let esArbol = 0
-let golpesArbol = 0
-let direccionNena = 0
-let reapareceArbol2 = 0
-let reapareceArbol1 = 0
-let cercaCofre = 0
-let inventarioAbierto = 0
+let es_arbol2 = 0
+let golpes_arbol2 = 0
+let es_arbol = 0
+let golpes_arbol = 0
+let direccion_nena = 0
+let reaparece_arbol2 = 0
+let reaparece_arbol1 = 0
+let cerca_cofre = 0
+let inventario_abierto = 0
 let lena = 0
 let cabras = 0
 let huevos = 0
 let patatas = 0
 let gallinas = 0
 let caballos = 0
+let cerca_trader = 0
+let trade_abierto = 0
 let costes_tradeo = {
     "gallina" : 6,
     "cabra" : 5,
@@ -588,21 +805,23 @@ let suma_inventario = {
     "huevo" : 12,
     "patata" : 1.5,
 }
+trade_abierto = 0
+cerca_trader = 0
 caballos = 0
 gallinas = 0
 patatas = 0
 huevos = 0
 cabras = 0
 lena = 0
-inventarioAbierto = 0
-cercaCofre = 0
-reapareceArbol1 = 0
-reapareceArbol2 = 0
-direccionNena = 0
-golpesArbol = 0
-esArbol = 1
-golpesArbol2 = 0
-esArbol2 = 1
+inventario_abierto = 0
+cerca_cofre = 0
+reaparece_arbol1 = 0
+reaparece_arbol2 = 0
+direccion_nena = 0
+golpes_arbol = 0
+es_arbol = 1
+golpes_arbol2 = 0
+es_arbol2 = 1
 scene.setBackgroundImage(assets.image`background`)
 tiles.setCurrentTilemap(tilemap`nivel7`)
 nena = sprites.create(assets.image`nena-front`, SpriteKind.Player)
@@ -615,27 +834,30 @@ arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
 arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
 tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
-cofreInventario = sprites.create(assets.image`cofre`, SpriteKind.inventario)
-tiles.placeOnTile(cofreInventario, tiles.getTileLocation(0, 6))
+cofre_inventario = sprites.create(assets.image`cofre`, SpriteKind.inventario)
+tiles.placeOnTile(cofre_inventario, tiles.getTileLocation(0, 6))
 // DELETE TRONCOS & RESTART ARBOLES
 game.onUpdateInterval(500, function () {
-    if (esArbol == 0 && game.runtime() > reapareceArbol1) {
+    if (es_arbol == 0 && game.runtime() > reaparece_arbol1) {
         sprites.destroy(tronco1)
         arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
         tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
-        esArbol = 1
+        es_arbol = 1
     }
 })
 game.onUpdateInterval(500, function () {
-    if (esArbol2 == 0 && game.runtime() > reapareceArbol2) {
+    if (es_arbol2 == 0 && game.runtime() > reaparece_arbol2) {
         sprites.destroy(tronco2)
         arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
         tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
-        esArbol2 = 1
+        es_arbol2 = 1
     }
 })
 game.onUpdateInterval(500, function () {
-    if (!(nena.overlapsWith(cofreInventario))) {
-        cercaCofre = 0
+    if (!(nena.overlapsWith(cofre_inventario))) {
+        cerca_cofre = 0
+    }
+    if (!(nena.overlapsWith(trader))) {
+        cerca_trader = 0
     }
 })
