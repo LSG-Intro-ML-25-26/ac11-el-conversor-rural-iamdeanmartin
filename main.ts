@@ -354,104 +354,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if (trade_abierto == 0) {
             controller.moveSprite(nena, 0, 0)
             menu_tradeo = miniMenu.createMenuFromArray([
-            miniMenu.createMenuItem(" x 12 ", img`
-                . . 2 2 b b b b b . . . . . . . 
-                . 2 b 4 4 4 4 4 4 b . . . . . . 
-                2 2 4 4 4 4 d d 4 4 b . . . . . 
-                2 b 4 4 4 4 4 4 d 4 b . . . . . 
-                2 b 4 4 4 4 4 4 4 d 4 b . . . . 
-                2 b 4 4 4 4 4 4 4 4 4 b . . . . 
-                2 b 4 4 4 4 4 4 4 4 4 e . . . . 
-                2 2 b 4 4 4 4 4 4 4 b e . . . . 
-                . 2 b b b 4 4 4 b b b e . . . . 
-                . . e b b b b b b b e e . . . . 
-                . . . e e b 4 4 b e e e b . . . 
-                . . . . . e e e e e e b d b b . 
-                . . . . . . . . . . . b 1 1 1 b 
-                . . . . . . . . . . . c 1 d d b 
-                . . . . . . . . . . . c 1 b c . 
-                . . . . . . . . . . . . c c . . 
-                `),
-            miniMenu.createMenuItem(" x 1", img`
-                . . . . . . b b b b a a . . . . 
-                . . . . b b d d d 3 3 3 a a . . 
-                . . . b d d d 3 3 3 3 3 3 a a . 
-                . . b d d 3 3 3 3 3 3 3 3 3 a . 
-                . b 3 d 3 3 3 3 3 b 3 3 3 3 a b 
-                . b 3 3 3 3 3 a a 3 3 3 3 3 a b 
-                b 3 3 3 3 3 a a 3 3 3 3 d a 4 b 
-                b 3 3 3 3 b a 3 3 3 3 3 d a 4 b 
-                b 3 3 3 3 3 3 3 3 3 3 d a 4 4 e 
-                a 3 3 3 3 3 3 3 3 3 d a 4 4 4 e 
-                a 3 3 3 3 3 3 3 d d a 4 4 4 e . 
-                a a 3 3 3 d d d a a 4 4 4 e e . 
-                . e a a a a a a 4 4 4 4 e e . . 
-                . . e e b b 4 4 4 4 b e e . . . 
-                . . . e e e e e e e e . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `),
-            miniMenu.createMenuItem(" x 1", img`
-                . . . . . . b b b b . . . . . . 
-                . . . . . . b 4 4 4 b . . . . . 
-                . . . . . . b b 4 4 4 b . . . . 
-                . . . . . b 4 b b b 4 4 b . . . 
-                . . . . b d 5 5 5 4 b 4 4 b . . 
-                . . . . b 3 2 3 5 5 4 e 4 4 b . 
-                . . . b d 2 2 2 5 7 5 4 e 4 4 e 
-                . . . b 5 3 2 3 5 5 5 5 e e e e 
-                . . b d 7 5 5 5 3 2 3 5 5 e e e 
-                . . b 5 5 5 5 5 2 2 2 5 5 d e e 
-                . b 3 2 3 5 7 5 3 2 3 5 d d e 4 
-                . b 2 2 2 5 5 5 5 5 5 d d e 4 . 
-                b d 3 2 d 5 5 5 d d d 4 4 . . . 
-                b 5 5 5 5 d d 4 4 4 4 . . . . . 
-                4 d d d 4 4 4 . . . . . . . . . 
-                4 4 4 4 . . . . . . . . . . . . 
-                `),
-            miniMenu.createMenuItem(" x 1", img`
-                4 4 4 . . 4 4 4 4 4 . . . . . . 
-                4 5 5 4 4 5 5 5 5 5 4 4 . . . . 
-                b 4 5 5 1 5 1 1 1 5 5 5 4 . . . 
-                . b 5 5 5 5 1 1 5 5 1 1 5 4 . . 
-                . b d 5 5 5 5 5 5 5 5 1 1 5 4 . 
-                b 4 5 5 5 5 5 5 5 5 5 5 1 5 4 . 
-                c d 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
-                c d 4 5 5 5 5 5 5 5 5 5 5 1 5 4 
-                c 4 5 5 5 d 5 5 5 5 5 5 5 5 5 4 
-                c 4 d 5 4 5 d 5 5 5 5 5 5 5 5 4 
-                . c 4 5 5 5 5 d d d 5 5 5 5 5 b 
-                . c 4 d 5 4 5 d 4 4 d 5 5 5 4 c 
-                . . c 4 4 d 4 4 4 4 4 d d 5 d c 
-                . . . c 4 4 4 4 4 4 4 4 5 5 5 4 
-                . . . . c c b 4 4 4 b b 4 5 4 4 
-                . . . . . . c c c c c c b b 4 . 
-                `),
-            miniMenu.createMenuItem(" x 1.5kg", img`
-                ........................
-                ..........bbbb..........
-                ........bbddddbb........
-                .......bddbbbbddb.......
-                ......bdbbddddbbdb......
-                .....bdbbdbbbbdbbdb.....
-                .....bdbdbddddbdbdb.....
-                .....cdbbdbbbbdbbdc.....
-                .....cbdbbddddbbdbc.....
-                .....efbddbbbbddbce.....
-                .....eeffbddddbccee.....
-                .....eeeeffcccceee......
-                .....ceeeeeeeeeeee......
-                .....ceeeeeeeeeeee......
-                .....feeeeeeeeeeee......
-                .....cceeeeeeeeeee......
-                ......feeeeeeeeeee......
-                .....6fceeeeeeeeee6.....
-                ....6776eeeeeeeee676....
-                ...6777666eeee6666776...
-                ..67768e67766777667776..
-                ...668ee7768867788666...
-                ......ee77eeee77ecee....
-                ......ee6eeeeee6eef.....
-                `)
+            miniMenu.createMenuItem(" x 12 ", assets.image`huevos`),
+            miniMenu.createMenuItem(" x 1", assets.image`gallina`),
+            miniMenu.createMenuItem(" x 1", assets.image`cabra`),
+            miniMenu.createMenuItem(" x 1", assets.image`caballo`),
+            miniMenu.createMenuItem(" x 1.5kg", assets.image`patata`)
             ])
             trade_abierto = 1
             menu_tradeo.setTitle("Comercio Oscuro")
@@ -518,78 +425,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             inventario_abierto = 1
             controller.moveSprite(nena, 0, 0)
             menu_inventario = miniMenu.createMenuFromArray([
-            miniMenu.createMenuItem("Huevos: " + ("" + huevos), img`
-                . . 2 2 b b b b b . . . . . . . 
-                . 2 b 4 4 4 4 4 4 b . . . . . . 
-                2 2 4 4 4 4 d d 4 4 b . . . . . 
-                2 b 4 4 4 4 4 4 d 4 b . . . . . 
-                2 b 4 4 4 4 4 4 4 d 4 b . . . . 
-                2 b 4 4 4 4 4 4 4 4 4 b . . . . 
-                2 b 4 4 4 4 4 4 4 4 4 e . . . . 
-                2 2 b 4 4 4 4 4 4 4 b e . . . . 
-                . 2 b b b 4 4 4 b b b e . . . . 
-                . . e b b b b b b b e e . . . . 
-                . . . e e b 4 4 b e e e b . . . 
-                . . . . . e e e e e e b d b b . 
-                . . . . . . . . . . . b 1 1 1 b 
-                . . . . . . . . . . . c 1 d d b 
-                . . . . . . . . . . . c 1 b c . 
-                . . . . . . . . . . . . c c . . 
-                `),
-            miniMenu.createMenuItem("Gallinas: " + ("" + gallinas), img`
-                . . . . . . b b b b a a . . . . 
-                . . . . b b d d d 3 3 3 a a . . 
-                . . . b d d d 3 3 3 3 3 3 a a . 
-                . . b d d 3 3 3 3 3 3 3 3 3 a . 
-                . b 3 d 3 3 3 3 3 b 3 3 3 3 a b 
-                . b 3 3 3 3 3 a a 3 3 3 3 3 a b 
-                b 3 3 3 3 3 a a 3 3 3 3 d a 4 b 
-                b 3 3 3 3 b a 3 3 3 3 3 d a 4 b 
-                b 3 3 3 3 3 3 3 3 3 3 d a 4 4 e 
-                a 3 3 3 3 3 3 3 3 3 d a 4 4 4 e 
-                a 3 3 3 3 3 3 3 d d a 4 4 4 e . 
-                a a 3 3 3 d d d a a 4 4 4 e e . 
-                . e a a a a a a 4 4 4 4 e e . . 
-                . . e e b b 4 4 4 4 b e e . . . 
-                . . . e e e e e e e e . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `),
-            miniMenu.createMenuItem("Cabras: " + ("" + cabras), img`
-                . . . . . . b b b b . . . . . . 
-                . . . . . . b 4 4 4 b . . . . . 
-                . . . . . . b b 4 4 4 b . . . . 
-                . . . . . b 4 b b b 4 4 b . . . 
-                . . . . b d 5 5 5 4 b 4 4 b . . 
-                . . . . b 3 2 3 5 5 4 e 4 4 b . 
-                . . . b d 2 2 2 5 7 5 4 e 4 4 e 
-                . . . b 5 3 2 3 5 5 5 5 e e e e 
-                . . b d 7 5 5 5 3 2 3 5 5 e e e 
-                . . b 5 5 5 5 5 2 2 2 5 5 d e e 
-                . b 3 2 3 5 7 5 3 2 3 5 d d e 4 
-                . b 2 2 2 5 5 5 5 5 5 d d e 4 . 
-                b d 3 2 d 5 5 5 d d d 4 4 . . . 
-                b 5 5 5 5 d d 4 4 4 4 . . . . . 
-                4 d d d 4 4 4 . . . . . . . . . 
-                4 4 4 4 . . . . . . . . . . . . 
-                `),
-            miniMenu.createMenuItem("Caballos: " + ("" + caballos), img`
-                4 4 4 . . 4 4 4 4 4 . . . . . . 
-                4 5 5 4 4 5 5 5 5 5 4 4 . . . . 
-                b 4 5 5 1 5 1 1 1 5 5 5 4 . . . 
-                . b 5 5 5 5 1 1 5 5 1 1 5 4 . . 
-                . b d 5 5 5 5 5 5 5 5 1 1 5 4 . 
-                b 4 5 5 5 5 5 5 5 5 5 5 1 5 4 . 
-                c d 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
-                c d 4 5 5 5 5 5 5 5 5 5 5 1 5 4 
-                c 4 5 5 5 d 5 5 5 5 5 5 5 5 5 4 
-                c 4 d 5 4 5 d 5 5 5 5 5 5 5 5 4 
-                . c 4 5 5 5 5 d d d 5 5 5 5 5 b 
-                . c 4 d 5 4 5 d 4 4 d 5 5 5 4 c 
-                . . c 4 4 d 4 4 4 4 4 d d 5 d c 
-                . . . c 4 4 4 4 4 4 4 4 5 5 5 4 
-                . . . . c c b 4 4 4 b b 4 5 4 4 
-                . . . . . . c c c c c c b b 4 . 
-                `),
+            miniMenu.createMenuItem("Huevos: " + ("" + huevos), assets.image`huevos`),
+            miniMenu.createMenuItem("Gallinas: " + ("" + gallinas), assets.image`gallina`),
+            miniMenu.createMenuItem("Cabras: " + ("" + cabras), assets.image`cabra`),
+            miniMenu.createMenuItem("Caballos: " + ("" + caballos), assets.image`caballo`),
             miniMenu.createMenuItem("Leña: " + ("" + lena), img`
                 ........................
                 ..........bbbb..........
@@ -616,24 +455,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 ......ee77eeee77ecee....
                 ......ee6eeeeee6eef.....
                 `),
-            miniMenu.createMenuItem("Patatas: " + ("" + patatas), img`
-                . . . . . . 2 2 2 2 . . . . . . 
-                . . . . 2 2 3 3 3 3 2 e . . . . 
-                . . . 2 3 d 1 1 d d 3 2 e . . . 
-                . . 2 3 1 d 3 3 3 d d 3 e . . . 
-                . 2 3 1 3 3 3 3 3 d 1 3 b e . . 
-                . 2 1 d 3 3 3 3 d 3 3 1 3 b b . 
-                2 3 1 d 3 3 1 1 3 3 3 1 3 4 b b 
-                2 d 3 3 d 1 3 1 3 3 3 1 3 4 4 b 
-                2 d 3 3 3 1 3 1 3 3 3 1 b 4 4 e 
-                2 d 3 3 3 1 1 3 3 3 3 1 b 4 4 e 
-                e d 3 3 3 3 d 3 3 3 d d b 4 4 e 
-                e d d 3 3 3 d 3 3 3 1 3 b 4 b e 
-                e 3 d 3 3 1 d d 3 d 1 b b e e . 
-                . e 3 1 1 d d 1 1 1 b b e e e . 
-                . . e 3 3 3 3 3 3 b e e e e . . 
-                . . . e e e e e e e e e e . . . 
-                `)
+            miniMenu.createMenuItem("Patatas: " + ("" + patatas), assets.image`patata`)
             ])
             menu_inventario.setDimensions(130, 90)
             menu_inventario.z = 4
