@@ -1,19 +1,35 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
   <title>El conversor rural</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
-    iframe { width: 100vw; height: 100vh; border: 0; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .game {
+      width: 480px;
+      aspect-ratio: 4 / 3;
+      max-width: 95vw;
+      max-height: 95vh;
+      border: none;
+    }
   </style>
 </head>
+
 <body>
   <iframe
-    src="https://arcade.makecode.com/---run?id=S23598-81897-16068-60982"
+    class="game"
+    src="https://arcade.makecode.com/#pub:github:lsg-intro-ml-25-26/ac11-el-conversor-rural-iamdeanmartin"
     allowfullscreen
-    sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
   ></iframe>
 </body>
 </html>
