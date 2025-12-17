@@ -1,88 +1,24 @@
----
-# front matter (no borrar)
----
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>{{ site.github.project_title }}</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
-
-    <link rel="icon" type="image/png" href="./icon.png">
-    <link rel="apple-touch-icon" href="./icon.png">
-
-    <!-- Scripts del template de MakeCode -->
-    <script src="./assets/js/loader.js?v={{ site.github.build_revision }}"></script>
-    <script src="./assets/js/custom.js?v={{ site.github.build_revision }}"></script>
-
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background: black;
-            overflow: hidden;
-            font-family: monospace;
-        }
-
-        #root {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        iframe {
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: 100%;
-            height: 100%;
-            max-width: 560px;   /* tamaño consola Arcade */
-            max-height: 840px;
-            border: none;
-        }
-
-        footer {
-            position: absolute;
-            bottom: 4px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.8em;
-            color: #888;
-        }
-
-        footer a {
-            color: #888;
-            margin: 0 8px;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>El conversor rural</title>
+  <style>
+    html, body { height: 100%; margin: 0; background: #000; }
+    body { display: grid; place-items: center; }
+    iframe {
+      width: min(560px, 96vw);
+      height: min(840px, 96vh);
+      border: 0;
+    }
+  </style>
 </head>
-
 <body>
-    <div id="root">
-        <iframe
-            id="simframe"
-            allowfullscreen
-            sandbox="allow-popups allow-forms allow-scripts allow-same-origin">
-        </iframe>
-
-        <footer>
-            <a target="_blank" href="https://github.com/{{ site.github.owner_name }}/{{ site.github.repository_name }}">GitHub</a>
-            <a target="_blank" href="https://arcade.makecode.com/#pub:github:{{ site.github.owner_name }}/{{ site.github.repository_name }}">Edit</a>
-        </footer>
-    </div>
-    <script>
-        makeCodeRun({
-            js: "./assets/js/binary.js?v={{ site.github.build_revision }}"
-        });
-    </script>
+  <iframe
+    src="https://arcade.makecode.com/---run?id=S98773-18010-60885-99754"
+    allowfullscreen
+    sandbox="allow-popups allow-forms allow-scripts allow-same-origin"
+  ></iframe>
 </body>
 </html>
