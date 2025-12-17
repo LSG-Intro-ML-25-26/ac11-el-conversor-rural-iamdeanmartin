@@ -33,7 +33,7 @@ function comprar_objeto () {
     menu_tradeo.onSelectionChanged(function (selection, selectedIndex) {
         indice_seleccionado = selectedIndex
     })
-    if (indice_seleccionado == 0) {
+    if (indice_seleccionado == indice_seleccionado) {
         if (lena >= 3) {
             lena = trade_huevo(lena)
             anadir_huevos()
