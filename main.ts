@@ -35,6 +35,7 @@ function comprar_objeto () {
         if (lena >= 3) {
             lena = trade_huevo(lena)
             anadir_huevos()
+            game.showLongText("Huevos intercambiados con éxito.", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -42,6 +43,7 @@ function comprar_objeto () {
         if (lena >= 6) {
             lena = trade_gallina(lena)
             anadir_gallina()
+            game.showLongText("Gallina intercambiada con éxito.", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -49,6 +51,7 @@ function comprar_objeto () {
         if (lena >= 5) {
             lena = trade_cabra(lena)
             anadir_cabra()
+            game.showLongText("Cabra intercambiada con éxito.", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -56,6 +59,7 @@ function comprar_objeto () {
         if (lena >= 12) {
             lena = trade_caballo(lena)
             anadir_caballo()
+            game.showLongText("Caballo intercambiado con éxito.", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -63,6 +67,7 @@ function comprar_objeto () {
         if (lena >= 2) {
             lena = trade_patata(lena)
             anadir_patata()
+            game.showLongText("Patats intercambiadas con éxito.", DialogLayout.Bottom)
         } else {
             game.showLongText("Material Insuficiente", DialogLayout.Bottom)
         }
@@ -349,7 +354,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if (trade_abierto == 0) {
             controller.moveSprite(nena, 0, 0)
             menu_tradeo = miniMenu.createMenuFromArray([
-            miniMenu.createMenuItem("12 x ", img`
+            miniMenu.createMenuItem(" x 12 ", img`
                 . . 2 2 b b b b b . . . . . . . 
                 . 2 b 4 4 4 4 4 4 b . . . . . . 
                 2 2 4 4 4 4 d d 4 4 b . . . . . 
@@ -367,7 +372,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 . . . . . . . . . . . c 1 b c . 
                 . . . . . . . . . . . . c c . . 
                 `),
-            miniMenu.createMenuItem("1 x", img`
+            miniMenu.createMenuItem(" x 1", img`
                 . . . . . . b b b b a a . . . . 
                 . . . . b b d d d 3 3 3 a a . . 
                 . . . b d d d 3 3 3 3 3 3 a a . 
@@ -385,7 +390,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 . . . e e e e e e e e . . . . . 
                 . . . . . . . . . . . . . . . . 
                 `),
-            miniMenu.createMenuItem("1 x ", img`
+            miniMenu.createMenuItem(" x 1", img`
                 . . . . . . b b b b . . . . . . 
                 . . . . . . b 4 4 4 b . . . . . 
                 . . . . . . b b 4 4 4 b . . . . 
@@ -403,7 +408,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 4 d d d 4 4 4 . . . . . . . . . 
                 4 4 4 4 . . . . . . . . . . . . 
                 `),
-            miniMenu.createMenuItem("1 x ", img`
+            miniMenu.createMenuItem(" x 1", img`
                 4 4 4 . . 4 4 4 4 4 . . . . . . 
                 4 5 5 4 4 5 5 5 5 5 4 4 . . . . 
                 b 4 5 5 1 5 1 1 1 5 5 5 4 . . . 
@@ -421,7 +426,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                 . . . . c c b 4 4 4 b b 4 5 4 4 
                 . . . . . . c c c c c c b b 4 . 
                 `),
-            miniMenu.createMenuItem("1.5 x", img`
+            miniMenu.createMenuItem(" x 1.5kg", img`
                 ........................
                 ..........bbbb..........
                 ........bbddddbb........
