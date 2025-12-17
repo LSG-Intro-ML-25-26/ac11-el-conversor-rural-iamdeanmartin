@@ -595,6 +595,8 @@ function trade_caballo (lena: number) {
 function trade_cabra (lena: number) {
     return lena - 5
 }
+// INICIALIZAMOS LAS VARIABLES
+// 
 let tronco2: Sprite = null
 let tronco1: Sprite = null
 let menu_inventario: miniMenu.MenuSprite = null
