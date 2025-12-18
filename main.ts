@@ -596,7 +596,6 @@ function trade_cabra (lena: number) {
     return lena - 5
 }
 // INICIALIZAMOS LAS VARIABLES
-// 
 let tronco2: Sprite = null
 let tronco1: Sprite = null
 let menu_inventario: miniMenu.MenuSprite = null
@@ -657,16 +656,20 @@ es_arbol2 = 1
 scene.setBackgroundImage(assets.image`background`)
 tiles.setCurrentTilemap(tilemap`nivel7`)
 nena = sprites.create(assets.image`nena-front`, SpriteKind.Player)
+nena.z = 2
 controller.moveSprite(nena, 100, 100)
 nena.setStayInScreen(true)
 tiles.placeOnTile(nena, tiles.getTileLocation(8, 5))
 let trader = sprites.create(assets.image`comerciante`, SpriteKind.comerciante)
 tiles.placeOnTile(trader, tiles.getTileLocation(3, 5))
 arbol = sprites.create(assets.image`árbol`, SpriteKind.material)
+arbol.z = 1
 tiles.placeOnTile(arbol, tiles.getTileLocation(6, 5))
 arbol2 = sprites.create(assets.image`árbol`, SpriteKind.material)
+arbol2.z = 2
 tiles.placeOnTile(arbol2, tiles.getTileLocation(8, 6))
 cofre_inventario = sprites.create(assets.image`cofre`, SpriteKind.inventario)
+cofre_inventario.z = 1
 tiles.placeOnTile(cofre_inventario, tiles.getTileLocation(0, 6))
 // DELETE TRONCOS & RESTART ARBOLES
 game.onUpdateInterval(500, function () {
